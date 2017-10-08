@@ -75,9 +75,9 @@ And for the most special, magic and wonderful part of ANTLR, visualization, foll
   Then, use the `grun` tool comes with antlr to test your grammars.
   ```sh
   # Testing lexer
-  java org.antlr.v4.gui.TestRig C1Lexer tokens -tokens ../../test/test_cases/simple.c1
+  java org.antlr.v4.gui.TestRig C1Lexer tokens -tokens ../test/test_cases/simple.c1
   # Testing lexer + parser, GUI version parse tree
-  java org.antlr.v4.gui.TestRig C1 compilationUnit -gui ../../test/test_cases/simple.c1
+  java org.antlr.v4.gui.TestRig C1 compilationUnit -gui ../test/test_cases/simple.c1
   # Testing lexer + parser, console printed version parse tree
-  java org.antlr.v4.gui.TestRig C1 compilationUnit -tree ../../test/test_cases/simple.c1
+  java org.antlr.v4.gui.TestRig C1 compilationUnit -tree ../test/test_cases/simple.c1
   ```
