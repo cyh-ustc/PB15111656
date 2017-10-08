@@ -33,7 +33,6 @@ compilationUnit:
 	compilationUnit (decl | funcdef)
 	| (decl | funcdef)
 ;
-
 ```
 
 使用课本上消除直接左递归的方法改写
@@ -49,8 +48,61 @@ compilationUnit_:
 
 #### 实验测试
 
-* par_1.c1测试基本的语法分析
-* par_2.c1测试if else结合
-* par_3.c1测试运算符的优先级
-* par_4.c1错误的例子
+* par_1.c1
 
+  测试基本的语法分析
+
+
+  经测试生成的ast树符合预期
+
+* par_2.c1
+
+  ```c
+  	if(1==1)
+  		if(1==1)
+  			;
+  		else
+  			;
+  	else
+  		;
+  ```
+
+  测试if else
+
+  ```
+  (compilationUnit (funcdef void main ( ) (block { (stmt if ( (cond (exp 1) == (exp 1)) ) (stmt if ( (cond (exp 1) == (exp 1)) ) (stmt ;) else (stmt ;)) else (stmt ;)) })) compilationUnit_)
+  ```
+
+  经测试对if else的处理符合预期
+
+
+* par_3.c1
+
+  测试运算符的优先级
+
+  ```c
+  e = 2 + 3 * 2 + (1 - 5 % 3);
+  ```
+
+  ```
+  (compilationUnit (funcdef void main ( ) (block { (decl (vardecl int (vardef e) ;)) (stmt (lval e) = (exp (exp (exp 2) + (exp (exp 3) * (exp 2))) + (exp ( (exp (exp 1) - (exp (exp 5) % (exp 3))) ))) ;) })) compilationUnit_)
+  ```
+
+  经测试对+ *等运算符优先级的处理符合预期
+
+* par_4.c1
+
+  错误的例子
+
+
+  包含以下错误：
+
+  * 函数具有返回类型
+  * 函数声明
+  * if缺少条件
+  * 数字作为语句
+  * 语句块大括号不配对
+  * 多维数组声明
+  * 不合法的数字
+
+经测试符合预期

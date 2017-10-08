@@ -1,0 +1,17 @@
+const int a = 1, b = 3;
+const int c[] = {0};
+int d = 524,e = 0x5fff;
+int f[0x2f], g[] = {0,0,0};
+void main()
+{
+	e = 1 * 2 + 3 * (5 / 4 % 1);
+	if(e==1)
+		b = 2;
+	else
+		b = 3;
+	while(1>=1)
+	{
+		e = - + - + 1;
+	}
+	{}
+}

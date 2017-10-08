@@ -50,5 +50,6 @@ exp:
     | exp (Plus | Minus) exp
     | (Plus | Minus) exp
     | LeftParen exp RightParen
+    | lval
     | Number
 ;
