@@ -1,0 +1,10 @@
+需要的环境：
+	python3
+	antlr4
+	antlr4-python3-runtime
+编译方式：
+	不用编译
+使用方法：
+	./run.sh
+	根据提示输入串
+	详细说明见report.md
