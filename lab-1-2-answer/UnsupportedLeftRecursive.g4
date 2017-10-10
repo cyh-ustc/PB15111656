@@ -1,6 +1,7 @@
 grammar UnsupportedLeftRecursive;
 
-S: A 'a'|'b';
-A: S 'd'|;
+S: A 'a'|'b';    A: S 'd'|;
 
-E: E? ('a'|'b');
+E: E? 'a';
+
+
