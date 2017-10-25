@@ -85,9 +85,37 @@ ANTLR从4.0开始生成的是ALL(*)解析器，其中A是自适应（Adaptive）
 #### Recursion
 了解并总结enterRecursionRule、unrollRecursionContexts、adaptivePredict函数的作用、接口和主要处理流程。
 
-
+Binary expressions are expressions which contain a recursive invocation of the rule as the first and last element of the alternative.
+Suffix expressions contain a recursive invocation of the rule as the first element of the alternative, but not as the last element.
+Prefix expressions contain a recursive invocation of the rule as the last element of the alternative, but not as the first element.
 
 #### 错误处理机制
+当一个文法错误产生时，antlr爆出一个异常，并试图恢复（通常靠多读取一些tokens）。所有的规则在
+try/catch/finally
 
 
-
+<table>
+<tr>
+<th>Exception name</th><th>Description</th>
+</tr>
+<tr>
+<td>RecognitionException</td><td>
+The superclass of all exceptions thrown by an ANTLR-generated recognizer. It’s a subclass of RuntimeException to avoid the hassles of checked exceptions. This exception records where the recognizer (lexer or parser) was in the input, where it was in the ATN (internal graph data structure representing the grammar), the rule invocation stack, and what kind of problem occurred.</td>
+</tr>
+<tr>
+<td>NoViableAltException</td><td>
+Indicates that the parser could not decide which of two or more paths to take by looking at the remaining input. This exception tracks the starting token of the offending input and also knows where the parser was in the various paths when the error occurred.</td>
+</tr>
+<tr>
+<td>LexerNoViableAltException</td><td>
+The equivalent of NoViableAltException but for lexers only.</td>
+</tr>
+<tr>
+<td>InputMismatchException</td><td>
+The current input Token does not match what the parser expected.</td>
+</tr>
+<tr>
+<td>FailedPredicateException</td><td>
+A semantic predicate that evaluates to false during prediction renders the surrounding alternative nonviable. Prediction occurs when a rule is predicting which alternative to take. If all viable paths disappear, parser will throw NoViableAltException. This predicate gets thrown by the parser when a semantic predicate evaluates to false outside of prediction, during the normal parsing process of matching tokens and calling rules.</td>
+</tr>
+</table>
