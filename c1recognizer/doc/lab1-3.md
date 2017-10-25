@@ -54,11 +54,40 @@ antlr为每个非终结符声明了一个类，这些类的成员和文法产生
 
 #### 关于ATN
 
+全称  augmented transition networks
+
+扩充转移网络文法ATN，就是用上下文无关文法的扩充来实现上下文相关文法。ATN用一组寄存器存放语法分析信息，每走一步都要测试一下当前情况，并根据测试结果决定做什么动作，最后把寄存器中的信息综合起来，即得到被分析句子的语法结构。
+
+#### 关于SLL和ALL
+
+* sll
+
+sll代表了 strong leftmost left-to-right
+
+sll是ll文法的子集。
+
+对于任意两个A的产生式
+
+$A→a$
+
+$A→b$
+
+有$FIRST_k(aFOLLOW(A))∩FIRST_k(bFOLLOW(A))=∅$
+
+则这个文法为strong文法。LL文法见书上。
+
+* ALL(*) 
+
+ANTLR从4.0开始生成的是ALL(*)解析器，其中A是自适应（Adaptive）的意思。ALL(*)解析器是由Terence Parr、Sam Harwell与Kathleen Fisher共同研发的，对传统的LL(*)解析器有很大的改进，ANTLR是目前唯一可以生成ALL(*)解析器的工具。 
 
 
-#### 关于SLL
 
 #### Recursion
 了解并总结enterRecursionRule、unrollRecursionContexts、adaptivePredict函数的作用、接口和主要处理流程。
 
+
+
 #### 错误处理机制
+
+
+
