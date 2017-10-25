@@ -28,7 +28,7 @@ memory
 string
 -
 
-/home/cyh/Desktop/compiler/labs/c1recognizer/test/main.cpp
+/home/cyh/Desktop/c1recognizer/test/main.cpp
 iostream
 -
 fstream
@@ -40,9 +40,9 @@ rapidjson/stringbuffer.h
 c1recognizer/recognizer.h
 -
 syntax_tree_serializer.hpp
-/home/cyh/Desktop/compiler/labs/c1recognizer/test/syntax_tree_serializer.hpp
+/home/cyh/Desktop/c1recognizer/test/syntax_tree_serializer.hpp
 
-/home/cyh/Desktop/compiler/labs/c1recognizer/test/syntax_tree_serializer.hpp
+/home/cyh/Desktop/c1recognizer/test/syntax_tree_serializer.hpp
 c1recognizer/syntax_tree.h
 -
 

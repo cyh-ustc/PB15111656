@@ -5,8 +5,8 @@ CMakeFiles/c1r_test.dir/test/main.cpp.o
  ../include/c1recognizer/error_reporter.h
  ../include/c1recognizer/recognizer.h
  ../include/c1recognizer/syntax_tree.h
- /home/cyh/Desktop/compiler/labs/c1recognizer/test/main.cpp
- /home/cyh/Desktop/compiler/labs/c1recognizer/test/syntax_tree_serializer.hpp
+ /home/cyh/Desktop/c1recognizer/test/main.cpp
+ /home/cyh/Desktop/c1recognizer/test/syntax_tree_serializer.hpp
  externals/rapidjson/src/rapidjson/include/rapidjson/allocators.h
  externals/rapidjson/src/rapidjson/include/rapidjson/encodings.h
  externals/rapidjson/src/rapidjson/include/rapidjson/internal/diyfp.h

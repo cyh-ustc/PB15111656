@@ -146,9 +146,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/antlr4_shared.dir/src/tree/xpath/XPathTokenElement.cpp.o"
   "CMakeFiles/antlr4_shared.dir/src/tree/xpath/XPathWildcardAnywhereElement.cpp.o"
   "CMakeFiles/antlr4_shared.dir/src/tree/xpath/XPathWildcardElement.cpp.o"
-  "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.pdb"
-  "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.so"
-  "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.so.4.7"
+  "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.pdb"
+  "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.so"
+  "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.so.4.7"
 )
 
 # Per-language clean rules from dependency scanning.

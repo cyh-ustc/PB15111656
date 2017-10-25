@@ -1,13 +1,13 @@
 # Target labels
  rapidjson
 # Source files and their labels
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/rapidjson
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/rapidjson.rule
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/rapidjson-complete.rule
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-install.rule
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-mkdir.rule
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-download.rule
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-update.rule
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-patch.rule
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-configure.rule
-/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-build.rule
+/home/cyh/Desktop/c1recognizer/build/CMakeFiles/rapidjson
+/home/cyh/Desktop/c1recognizer/build/CMakeFiles/rapidjson.rule
+/home/cyh/Desktop/c1recognizer/build/CMakeFiles/rapidjson-complete.rule
+/home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-install.rule
+/home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-mkdir.rule
+/home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-download.rule
+/home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-update.rule
+/home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-patch.rule
+/home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-configure.rule
+/home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-build.rule

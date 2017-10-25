@@ -9,46 +9,253 @@ syntax_tree_builder::syntax_tree_builder(error_reporter &_err) : err(_err) {}
 
 antlrcpp::Any syntax_tree_builder::visitCompilationUnit(C1Parser::CompilationUnitContext *ctx)
 {
+    auto result = new assembly;
+    int i,j;
+    result->line = ctx->getStart()->getLine();
+    result->pos = ctx->getStart()->getCharPositionInLine();
+    auto decls = ctx->decl();
+    for(i=0;i<decls.size();++i)
+    {
+        if(decls[i]->vardecl())
+        {
+            auto vardefs = decls[i]->vardecl()->vardef();
+            for(j=0;j<vardefs.size();++j)
+                result->global_defs.emplace_back(visit(vardefs[j]).as<var_def_stmt_syntax *>());
+        }
+        if(decls[i]->constdecl())
+        {
+            auto constdefs = decls[i]->constdecl()->constdef();
+            if(!decls[i]->constdecl()->Int())
+                err.warn(decls[i]->constdecl()->Const()->getSymbol()->getLine(), decls[i]->constdecl()->Const()->getSymbol()->getCharPositionInLine(), "Concrete type missing for const declaration; integer assumed.");
+            for(j=0;j<constdefs.size();++j)
+                result->global_defs.emplace_back(visit(constdefs[j]).as<var_def_stmt_syntax *>());
+
+                
+        }
+    }
+    auto funcdefs = ctx->funcdef();
+    for(i=0;i<funcdefs.size();++i)
+    result->global_defs.emplace_back(visit(funcdefs[i]).as<func_def_syntax *>());
+
+    return static_cast<assembly *>(result);
 }
 
 antlrcpp::Any syntax_tree_builder::visitDecl(C1Parser::DeclContext *ctx)
 {
+
 }
 
 antlrcpp::Any syntax_tree_builder::visitConstdecl(C1Parser::ConstdeclContext *ctx)
 {
+
 }
 
 antlrcpp::Any syntax_tree_builder::visitConstdef(C1Parser::ConstdefContext *ctx)
 {
+    auto result = new var_def_stmt_syntax;
+    result->line = ctx->getStart()->getLine();
+    result->pos = ctx->getStart()->getCharPositionInLine();
+    result->is_constant = true;
+    result->name = ctx->Identifier()->getSymbol()->getText();
+    if(ctx->LeftBracket())
+    {
+        int count = 0;
+        if(ctx->exp().size()-ctx->Comma().size()==2)
+        {
+            result->array_length.reset(visit(ctx->exp()[count]).as<expr_syntax *>());
+            count++;
+            for(;count<ctx->exp().size();++count)
+                result->initializers.emplace_back(visit(ctx->exp()[count]).as<expr_syntax *>());
+        }
+        else
+        {
+            for(;count<ctx->exp().size();++count)
+                result->initializers.emplace_back(visit(ctx->exp()[count]).as<expr_syntax *>());
+            auto arraylength = new literal_syntax;
+            arraylength->line = ctx->LeftBracket()->getSymbol()->getLine();
+            arraylength->pos = ctx->LeftBracket()->getSymbol()->getCharPositionInLine();
+            arraylength->number = result->initializers.size();
+            result->array_length.reset(static_cast<expr_syntax *>(arraylength));
+        }
+    }
+    else
+    {
+        result->initializers.emplace_back(visit(ctx->exp()[0]).as<expr_syntax *>());
+    }
+    return static_cast<var_def_stmt_syntax *>(result);
 }
 
 antlrcpp::Any syntax_tree_builder::visitVardecl(C1Parser::VardeclContext *ctx)
 {
+
 }
 
 antlrcpp::Any syntax_tree_builder::visitVardef(C1Parser::VardefContext *ctx)
 {
+    auto result = new var_def_stmt_syntax;
+    result->line = ctx->getStart()->getLine();
+    result->pos = ctx->getStart()->getCharPositionInLine();
+    result->is_constant = false;
+    result->name = ctx->Identifier()->getSymbol()->getText();
+    if(ctx->Assign())
+    {
+        if(ctx->LeftBracket())
+        {
+            int count = 0;
+            if(ctx->exp().size()-ctx->Comma().size()==2)
+            {
+                result->array_length.reset(visit(ctx->exp()[count]).as<expr_syntax *>());
+                count++;
+                for(;count<ctx->exp().size();++count)
+                    result->initializers.emplace_back(visit(ctx->exp()[count]).as<expr_syntax *>());
+            }
+            else
+            {
+                for(;count<ctx->exp().size();++count)
+                    result->initializers.emplace_back(visit(ctx->exp()[count]).as<expr_syntax *>());
+                auto arraylength = new literal_syntax;
+                arraylength->line = ctx->LeftBracket()->getSymbol()->getLine();
+                arraylength->pos = ctx->LeftBracket()->getSymbol()->getCharPositionInLine();
+                arraylength->number = result->initializers.size();
+                result->array_length.reset(static_cast<expr_syntax *>(arraylength));
+            }
+        }
+        else
+        {
+            result->initializers.emplace_back(visit(ctx->exp()[0]).as<expr_syntax *>());
+        }
+    }
+    else
+    {
+        if(ctx->LeftBracket())
+            result->array_length.reset(visit(ctx->exp()[0]).as<expr_syntax *>());
+    }
+    return static_cast<var_def_stmt_syntax *>(result);
+
 }
 
 antlrcpp::Any syntax_tree_builder::visitFuncdef(C1Parser::FuncdefContext *ctx)
 {
+    auto result = new func_def_syntax;
+    result->line = ctx->getStart()->getLine();
+    result->pos = ctx->getStart()->getCharPositionInLine();
+    result->name = ctx->Identifier()->getSymbol()->getText();
+    result->body.reset(visit(ctx->block()).as<block_syntax *>());
+    return static_cast<func_def_syntax *>(result);
 }
 
 antlrcpp::Any syntax_tree_builder::visitBlock(C1Parser::BlockContext *ctx)
 {
+    auto result = new block_syntax;
+    result->line = ctx->getStart()->getLine();
+    result->pos = ctx->getStart()->getCharPositionInLine();
+    auto decls = ctx->decl();
+    int i,j;
+    for(i=0;i<decls.size();++i)
+    {
+        if(decls[i]->vardecl())
+        {
+            auto vardefs = decls[i]->vardecl()->vardef();
+            for(j=0;j<vardefs.size();++j)
+                result->body.emplace_back(visit(vardefs[j]).as<var_def_stmt_syntax *>());
+        }
+        if(decls[i]->constdecl())
+        {
+            auto constdefs = decls[i]->constdecl()->constdef();
+            if(!decls[i]->constdecl()->Int())
+                err.warn(decls[i]->constdecl()->Const()->getSymbol()->getLine(), decls[i]->constdecl()->Const()->getSymbol()->getCharPositionInLine(), "Concrete type missing for const declaration; integer assumed.");
+            for(j=0;j<constdefs.size();++j)
+                result->body.emplace_back(visit(constdefs[j]).as<var_def_stmt_syntax *>());
+        }
+    }
+    auto stmts = ctx->stmt();
+    for(i=0;i<stmts.size();++i)
+    {
+        result->body.emplace_back(visit(stmts[i]).as<stmt_syntax *>());
+    }
+    return static_cast<block_syntax *>(result);
 }
 
 antlrcpp::Any syntax_tree_builder::visitStmt(C1Parser::StmtContext *ctx)
 {
+    if(ctx->lval())
+    {
+        auto result = new assign_stmt_syntax;
+        result->line = ctx->getStart()->getLine();
+        result->pos = ctx->getStart()->getCharPositionInLine();
+        result->target.reset(visit(ctx->lval()).as<lval_syntax *>());
+        result->value.reset(visit(ctx->exp()).as<expr_syntax *>());
+        return static_cast<stmt_syntax *>(result);
+    }
+    if(ctx->Identifier())
+    {
+        auto result = new func_call_stmt_syntax;
+        result->line = ctx->getStart()->getLine();
+        result->pos = ctx->getStart()->getCharPositionInLine();
+        result->name = ctx->Identifier()->getSymbol()->getText();
+        return static_cast<stmt_syntax *>(result);
+    }
+    if(ctx->block())
+    {
+        return static_cast<stmt_syntax *>(visit(ctx->block()).as<block_syntax *>());
+    }
+    if(ctx->If())
+    {
+        auto result = new if_stmt_syntax;
+        result->line = ctx->getStart()->getLine();
+        result->pos = ctx->getStart()->getCharPositionInLine();
+        result->pred.reset(visit(ctx->cond()).as<cond_syntax *>());
+        result->then_body.reset(visit(ctx->stmt()[0]).as<stmt_syntax *>());
+        if(ctx->Else())
+        result->else_body.reset(visit(ctx->stmt()[1]).as<stmt_syntax *>());
+        return static_cast<stmt_syntax *>(result);
+    }
+    if(ctx->While())
+    {
+        auto result = new while_stmt_syntax;
+        result->line = ctx->getStart()->getLine();
+        result->pos = ctx->getStart()->getCharPositionInLine();
+        result->pred.reset(visit(ctx->cond()).as<cond_syntax *>());
+        result->body.reset(visit(ctx->stmt()[0]).as<stmt_syntax *>());
+        return static_cast<stmt_syntax *>(result);
+    }
+    auto result = new empty_stmt_syntax;
+    return static_cast<stmt_syntax *>(result);
 }
 
 antlrcpp::Any syntax_tree_builder::visitLval(C1Parser::LvalContext *ctx)
 {
+    auto result = new lval_syntax;
+    result->line = ctx->getStart()->getLine();
+    result->pos = ctx->getStart()->getCharPositionInLine();
+    result->name = ctx->Identifier()->getSymbol()->getText();
+    if(auto expression = ctx->exp())
+    {
+        result->array_index.reset(visit(expression).as<expr_syntax *>());
+    }
+    return static_cast<lval_syntax *>(result);
 }
 
 antlrcpp::Any syntax_tree_builder::visitCond(C1Parser::CondContext *ctx)
 {
+    auto result = new cond_syntax;
+    result->line = ctx->getStart()->getLine();
+    result->pos = ctx->getStart()->getCharPositionInLine();
+    result->lhs.reset(visit(ctx->exp()[0]).as<expr_syntax *>());
+    if(ctx->Equal())
+        result->op = relop::equal;
+    if(ctx->NonEqual())
+        result->op = relop::non_equal;
+    if(ctx->Less())
+        result->op = relop::less;
+    if(ctx->Greater())
+        result->op = relop::greater;
+    if(ctx->LessEqual())
+        result->op = relop::less_equal;
+    if(ctx->GreaterEqual())
+        result->op = relop::greater_equal; 
+    result->rhs.reset(visit(ctx->exp()[1]).as<expr_syntax *>());
+    return static_cast<cond_syntax *>(result);
 }
 
 // Returns antlrcpp::Any, which is constructable from any type.
@@ -104,6 +311,13 @@ antlrcpp::Any syntax_tree_builder::visitExp(C1Parser::ExpContext *ctx)
     // In the case that `(` exists as a child, this is an expression like `'(' expressions[0] ')'`.
     if (ctx->LeftParen())
         return visit(expressions[0]); // Any already holds expr_syntax* here, no need for dispatch and re-patch with casting.
+
+    if (auto lv = ctx->lval())
+    {
+        return static_cast<expr_syntax *>(visit(lv).as<lval_syntax *>());
+    }
+
+
     // If `Number` exists as a child, we can say it's a literal integer expression.
     if (auto number = ctx->Number())
     {

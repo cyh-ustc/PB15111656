@@ -1,8 +1,8 @@
-# Install script for directory: /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/runtime
+# Install script for directory: /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/runtime
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp")
+  set(CMAKE_INSTALL_PREFIX "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -45,8 +45,8 @@ if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMP
     endif()
   endforeach()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.so.4.7"
-    "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.so"
+    "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.so.4.7"
+    "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.so"
     )
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libantlr4-runtime.so.4.7"
@@ -62,10 +62,10 @@ if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMP
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist/libantlr4-runtime.a")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "dev" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/antlr4-runtime" TYPE DIRECTORY FILES "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/runtime/src/" FILES_MATCHING REGEX "/[^/]*\\.h$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/antlr4-runtime" TYPE DIRECTORY FILES "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/runtime/src/" FILES_MATCHING REGEX "/[^/]*\\.h$")
 endif()
 

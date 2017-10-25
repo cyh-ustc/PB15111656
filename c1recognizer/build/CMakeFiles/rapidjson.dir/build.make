@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cyh/Desktop/compiler/labs/c1recognizer
+CMAKE_SOURCE_DIR = /home/cyh/Desktop/c1recognizer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cyh/Desktop/compiler/labs/c1recognizer/build
+CMAKE_BINARY_DIR = /home/cyh/Desktop/c1recognizer/build
 
 # Utility rule file for rapidjson.
 
@@ -64,53 +64,53 @@ CMakeFiles/rapidjson-complete: externals/rapidjson/src/rapidjson-stamp/rapidjson
 CMakeFiles/rapidjson-complete: externals/rapidjson/src/rapidjson-stamp/rapidjson-configure
 CMakeFiles/rapidjson-complete: externals/rapidjson/src/rapidjson-stamp/rapidjson-build
 CMakeFiles/rapidjson-complete: externals/rapidjson/src/rapidjson-stamp/rapidjson-install
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Completed 'rapidjson'"
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles
-	/usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/rapidjson-complete
-	/usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-done
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Completed 'rapidjson'"
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/CMakeFiles
+	/usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/CMakeFiles/rapidjson-complete
+	/usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-done
 
 externals/rapidjson/src/rapidjson-stamp/rapidjson-install: externals/rapidjson/src/rapidjson-stamp/rapidjson-build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "No install step for 'rapidjson'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E echo_append
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-install
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "No install step for 'rapidjson'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E echo_append
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-install
 
 externals/rapidjson/src/rapidjson-stamp/rapidjson-mkdir:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Creating directories for 'rapidjson'"
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-build
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/tmp
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src
-	/usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-mkdir
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Creating directories for 'rapidjson'"
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-build
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/rapidjson
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/tmp
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src
+	/usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-mkdir
 
 externals/rapidjson/src/rapidjson-stamp/rapidjson-download: externals/rapidjson/src/rapidjson-stamp/rapidjson-gitinfo.txt
 externals/rapidjson/src/rapidjson-stamp/rapidjson-download: externals/rapidjson/src/rapidjson-stamp/rapidjson-mkdir
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Performing download step (git clone) for 'rapidjson'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src && /usr/bin/cmake -P /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/tmp/rapidjson-gitclone.cmake
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src && /usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-download
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Performing download step (git clone) for 'rapidjson'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src && /usr/bin/cmake -P /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/tmp/rapidjson-gitclone.cmake
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src && /usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-download
 
 externals/rapidjson/src/rapidjson-stamp/rapidjson-update: externals/rapidjson/src/rapidjson-stamp/rapidjson-download
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "No update step for 'rapidjson'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson && /usr/bin/cmake -E echo_append
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson && /usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-update
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "No update step for 'rapidjson'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson && /usr/bin/cmake -E echo_append
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson && /usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-update
 
 externals/rapidjson/src/rapidjson-stamp/rapidjson-patch: externals/rapidjson/src/rapidjson-stamp/rapidjson-download
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "No patch step for 'rapidjson'"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "No patch step for 'rapidjson'"
 	/usr/bin/cmake -E echo_append
-	/usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-patch
+	/usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-patch
 
 externals/rapidjson/src/rapidjson-stamp/rapidjson-configure: externals/rapidjson/tmp/rapidjson-cfgcmd.txt
 externals/rapidjson/src/rapidjson-stamp/rapidjson-configure: externals/rapidjson/src/rapidjson-stamp/rapidjson-update
 externals/rapidjson/src/rapidjson-stamp/rapidjson-configure: externals/rapidjson/src/rapidjson-stamp/rapidjson-patch
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "No configure step for 'rapidjson'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E echo_append
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-configure
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "No configure step for 'rapidjson'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E echo_append
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-configure
 
 externals/rapidjson/src/rapidjson-stamp/rapidjson-build: externals/rapidjson/src/rapidjson-stamp/rapidjson-configure
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "No build step for 'rapidjson'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E echo_append
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "No build step for 'rapidjson'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E echo_append
+	cd /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-build && /usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/rapidjson/src/rapidjson-stamp/rapidjson-build
 
 rapidjson: CMakeFiles/rapidjson
 rapidjson: CMakeFiles/rapidjson-complete
@@ -135,6 +135,6 @@ CMakeFiles/rapidjson.dir/clean:
 .PHONY : CMakeFiles/rapidjson.dir/clean
 
 CMakeFiles/rapidjson.dir/depend:
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cyh/Desktop/compiler/labs/c1recognizer /home/cyh/Desktop/compiler/labs/c1recognizer /home/cyh/Desktop/compiler/labs/c1recognizer/build /home/cyh/Desktop/compiler/labs/c1recognizer/build /home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/rapidjson.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cyh/Desktop/c1recognizer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cyh/Desktop/c1recognizer /home/cyh/Desktop/c1recognizer /home/cyh/Desktop/c1recognizer/build /home/cyh/Desktop/c1recognizer/build /home/cyh/Desktop/c1recognizer/build/CMakeFiles/rapidjson.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rapidjson.dir/depend
 

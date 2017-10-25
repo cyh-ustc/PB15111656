@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cyh/Desktop/compiler/labs/c1recognizer/test/main.cpp" "/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/c1r_test.dir/test/main.cpp.o"
+  "/home/cyh/Desktop/c1recognizer/test/main.cpp" "/home/cyh/Desktop/c1recognizer/build/CMakeFiles/c1r_test.dir/test/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -28,7 +28,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/c1recognizer.dir/DependInfo.cmake"
+  "/home/cyh/Desktop/c1recognizer/build/CMakeFiles/c1recognizer.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

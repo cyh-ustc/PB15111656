@@ -3,16 +3,11 @@ options { tokenVocab = C1Lexer; }
 
 
 
-compilationUnit:  (decl | funcdef) compilationUnit_;
+compilationUnit:  (decl | funcdef)+;
 
-
-compilationUnit_:
-    (decl | funcdef)compilationUnit_
-    |
-;
 
 decl: constdecl | vardecl;
-constdecl: Const Int constdef (Comma constdef)* SemiColon;
+constdecl: Const Int? constdef (Comma constdef)* SemiColon;
 constdef:
     Identifier Assign exp
     | Identifier LeftBracket exp? RightBracket Assign LeftBrace exp (Comma exp)* RightBrace

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cyh/Desktop/compiler/labs/c1recognizer
+CMAKE_SOURCE_DIR = /home/cyh/Desktop/c1recognizer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cyh/Desktop/compiler/labs/c1recognizer/build
+CMAKE_BINARY_DIR = /home/cyh/Desktop/c1recognizer/build
 
 # Utility rule file for antlr4cpp_generation_c1_recognizer.
 
@@ -55,8 +55,8 @@ include CMakeFiles/antlr4cpp_generation_c1_recognizer.dir/progress.make
 
 CMakeFiles/antlr4cpp_generation_c1_recognizer: ../grammar/C1Lexer.g4
 CMakeFiles/antlr4cpp_generation_c1_recognizer: ../grammar/C1Parser.g4
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/antlr4cpp_generated_src
-	/usr/bin/java -jar /home/cyh/antlr/antlr-4.7-complete.jar -Werror -Dlanguage=Cpp -listener -visitor -o /home/cyh/Desktop/compiler/labs/c1recognizer/build/antlr4cpp_generated_src/c1_recognizer -package c1_recognizer /home/cyh/Desktop/compiler/labs/c1recognizer/grammar/C1Lexer.g4 /home/cyh/Desktop/compiler/labs/c1recognizer/grammar/C1Parser.g4
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/antlr4cpp_generated_src
+	/usr/bin/java -jar /home/cyh/antlr/antlr-4.7-complete.jar -Werror -Dlanguage=Cpp -listener -visitor -o /home/cyh/Desktop/c1recognizer/build/antlr4cpp_generated_src/c1_recognizer -package c1_recognizer /home/cyh/Desktop/c1recognizer/grammar/C1Lexer.g4 /home/cyh/Desktop/c1recognizer/grammar/C1Parser.g4
 
 antlr4cpp_generation_c1_recognizer: CMakeFiles/antlr4cpp_generation_c1_recognizer
 antlr4cpp_generation_c1_recognizer: CMakeFiles/antlr4cpp_generation_c1_recognizer.dir/build.make
@@ -73,6 +73,6 @@ CMakeFiles/antlr4cpp_generation_c1_recognizer.dir/clean:
 .PHONY : CMakeFiles/antlr4cpp_generation_c1_recognizer.dir/clean
 
 CMakeFiles/antlr4cpp_generation_c1_recognizer.dir/depend:
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cyh/Desktop/compiler/labs/c1recognizer /home/cyh/Desktop/compiler/labs/c1recognizer /home/cyh/Desktop/compiler/labs/c1recognizer/build /home/cyh/Desktop/compiler/labs/c1recognizer/build /home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/antlr4cpp_generation_c1_recognizer.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cyh/Desktop/c1recognizer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cyh/Desktop/c1recognizer /home/cyh/Desktop/c1recognizer /home/cyh/Desktop/c1recognizer/build /home/cyh/Desktop/c1recognizer/build /home/cyh/Desktop/c1recognizer/build/CMakeFiles/antlr4cpp_generation_c1_recognizer.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/antlr4cpp_generation_c1_recognizer.dir/depend
 

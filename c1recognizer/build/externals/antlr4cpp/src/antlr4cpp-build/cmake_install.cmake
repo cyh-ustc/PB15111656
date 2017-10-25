@@ -1,8 +1,8 @@
-# Install script for directory: /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp
+# Install script for directory: /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp")
+  set(CMAKE_INSTALL_PREFIX "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,14 +34,14 @@ endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/libantlr4" TYPE FILE FILES
-    "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/README.md"
-    "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/VERSION"
+    "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/README.md"
+    "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/VERSION"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime/cmake_install.cmake")
+  include("/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime/cmake_install.cmake")
 
 endif()
 
@@ -53,5 +53,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

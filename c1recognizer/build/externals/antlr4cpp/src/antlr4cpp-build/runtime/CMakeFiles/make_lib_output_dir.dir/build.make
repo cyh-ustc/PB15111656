@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp
+CMAKE_SOURCE_DIR = /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build
+CMAKE_BINARY_DIR = /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build
 
 # Utility rule file for make_lib_output_dir.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/
 include runtime/CMakeFiles/make_lib_output_dir.dir/progress.make
 
 runtime/CMakeFiles/make_lib_output_dir:
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime && /usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime && /usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/dist
 
 make_lib_output_dir: runtime/CMakeFiles/make_lib_output_dir
 make_lib_output_dir: runtime/CMakeFiles/make_lib_output_dir.dir/build.make
@@ -67,10 +67,10 @@ runtime/CMakeFiles/make_lib_output_dir.dir/build: make_lib_output_dir
 .PHONY : runtime/CMakeFiles/make_lib_output_dir.dir/build
 
 runtime/CMakeFiles/make_lib_output_dir.dir/clean:
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime && $(CMAKE_COMMAND) -P CMakeFiles/make_lib_output_dir.dir/cmake_clean.cmake
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime && $(CMAKE_COMMAND) -P CMakeFiles/make_lib_output_dir.dir/cmake_clean.cmake
 .PHONY : runtime/CMakeFiles/make_lib_output_dir.dir/clean
 
 runtime/CMakeFiles/make_lib_output_dir.dir/depend:
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/runtime /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime/CMakeFiles/make_lib_output_dir.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp/runtime/Cpp/runtime /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build/runtime/CMakeFiles/make_lib_output_dir.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : runtime/CMakeFiles/make_lib_output_dir.dir/depend
 

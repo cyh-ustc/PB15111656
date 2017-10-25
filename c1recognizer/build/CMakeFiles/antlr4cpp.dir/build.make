@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cyh/Desktop/compiler/labs/c1recognizer
+CMAKE_SOURCE_DIR = /home/cyh/Desktop/c1recognizer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cyh/Desktop/compiler/labs/c1recognizer/build
+CMAKE_BINARY_DIR = /home/cyh/Desktop/c1recognizer/build
 
 # Utility rule file for antlr4cpp.
 
@@ -64,52 +64,52 @@ CMakeFiles/antlr4cpp-complete: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp
 CMakeFiles/antlr4cpp-complete: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-configure
 CMakeFiles/antlr4cpp-complete: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-build
 CMakeFiles/antlr4cpp-complete: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-install
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Completed 'antlr4cpp'"
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles
-	/usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/antlr4cpp-complete
-	/usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-done
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Completed 'antlr4cpp'"
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/CMakeFiles
+	/usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/CMakeFiles/antlr4cpp-complete
+	/usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-done
 
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-install: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Performing install step for 'antlr4cpp'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && $(MAKE) install
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-install
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Performing install step for 'antlr4cpp'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && $(MAKE) install
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-install
 
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-mkdir:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Creating directories for 'antlr4cpp'"
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/tmp
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp
-	/usr/bin/cmake -E make_directory /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src
-	/usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-mkdir
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Creating directories for 'antlr4cpp'"
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/tmp
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp
+	/usr/bin/cmake -E make_directory /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src
+	/usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-mkdir
 
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-download: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-gitinfo.txt
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-download: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-mkdir
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Performing download step (git clone) for 'antlr4cpp'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src && /usr/bin/cmake -P /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-download-Debug.cmake
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src && /usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-download
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Performing download step (git clone) for 'antlr4cpp'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src && /usr/bin/cmake -P /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-download-Debug.cmake
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src && /usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-download
 
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-update: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-download
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Performing update step for 'antlr4cpp'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp && /usr/bin/git pull
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Performing update step for 'antlr4cpp'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp && /usr/bin/git pull
 
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-patch: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-download
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "No patch step for 'antlr4cpp'"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "No patch step for 'antlr4cpp'"
 	/usr/bin/cmake -E echo_append
-	/usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-patch
+	/usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-patch
 
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-configure: externals/antlr4cpp/tmp/antlr4cpp-cfgcmd.txt
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-configure: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-update
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-configure: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-patch
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Performing configure step for 'antlr4cpp'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -P /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-configure-Debug.cmake
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-configure
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Performing configure step for 'antlr4cpp'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -P /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-configure-Debug.cmake
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-configure
 
 externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-build: externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-configure
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Performing build step for 'antlr4cpp'"
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -Dmake=$(MAKE) -P /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-build-Debug.cmake
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -E touch /home/cyh/Desktop/compiler/labs/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cyh/Desktop/c1recognizer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Performing build step for 'antlr4cpp'"
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -Dmake=$(MAKE) -P /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-build-Debug.cmake
+	cd /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-build && /usr/bin/cmake -E touch /home/cyh/Desktop/c1recognizer/build/externals/antlr4cpp/src/antlr4cpp-stamp/antlr4cpp-build
 
 antlr4cpp: CMakeFiles/antlr4cpp
 antlr4cpp: CMakeFiles/antlr4cpp-complete
@@ -134,6 +134,6 @@ CMakeFiles/antlr4cpp.dir/clean:
 .PHONY : CMakeFiles/antlr4cpp.dir/clean
 
 CMakeFiles/antlr4cpp.dir/depend:
-	cd /home/cyh/Desktop/compiler/labs/c1recognizer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cyh/Desktop/compiler/labs/c1recognizer /home/cyh/Desktop/compiler/labs/c1recognizer /home/cyh/Desktop/compiler/labs/c1recognizer/build /home/cyh/Desktop/compiler/labs/c1recognizer/build /home/cyh/Desktop/compiler/labs/c1recognizer/build/CMakeFiles/antlr4cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cyh/Desktop/c1recognizer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cyh/Desktop/c1recognizer /home/cyh/Desktop/c1recognizer /home/cyh/Desktop/c1recognizer/build /home/cyh/Desktop/c1recognizer/build /home/cyh/Desktop/c1recognizer/build/CMakeFiles/antlr4cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/antlr4cpp.dir/depend
 
