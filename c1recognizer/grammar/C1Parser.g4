@@ -3,9 +3,7 @@ options { tokenVocab = C1Lexer; }
 
 
 
-compilationUnit:  (decl | funcdef)+;
-
-
+compilationUnit:  (decl | funcdef)+ EOF;
 decl: constdecl | vardecl;
 constdecl: Const Int? constdef (Comma constdef)* SemiColon;
 constdef:
@@ -41,9 +39,9 @@ cond:
     | exp GreaterEqual exp
 ;
 exp:
-    exp (Multiply | Divide | Modulo) exp
+    (Plus | Minus) exp
+    | exp (Multiply | Divide | Modulo) exp
     | exp (Plus | Minus) exp
-    | (Plus | Minus) exp
     | LeftParen exp RightParen
     | lval
     | Number
