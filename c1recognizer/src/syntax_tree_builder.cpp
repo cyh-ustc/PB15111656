@@ -10,6 +10,9 @@ syntax_tree_builder::syntax_tree_builder(error_reporter &_err) : err(_err) {}
 antlrcpp::Any syntax_tree_builder::visitCompilationUnit(C1Parser::CompilationUnitContext *ctx)
 {
     auto result = new assembly;
+    auto vdefs = new assembly;
+    auto fdefs = new assembly;
+
     int i,j;
     result->line = ctx->getStart()->getLine();
     result->pos = ctx->getStart()->getCharPositionInLine();
@@ -20,23 +23,45 @@ antlrcpp::Any syntax_tree_builder::visitCompilationUnit(C1Parser::CompilationUni
         {
             auto vardefs = decls[i]->vardecl()->vardef();
             for(j=0;j<vardefs.size();++j)
-                result->global_defs.emplace_back(visit(vardefs[j]).as<var_def_stmt_syntax *>());
+            vdefs->global_defs.emplace_back(visit(vardefs[j]).as<var_def_stmt_syntax *>());
         }
         if(decls[i]->constdecl())
         {
             auto constdefs = decls[i]->constdecl()->constdef();
             if(!decls[i]->constdecl()->Int())
-                err.warn(decls[i]->constdecl()->Const()->getSymbol()->getLine(), decls[i]->constdecl()->Const()->getSymbol()->getCharPositionInLine(), "Concrete type missing for const declaration; integer assumed.");
+                err.warn(decls[i]->constdecl()->constdef()[0]->getStart()->getLine(), decls[i]->constdecl()->constdef()[0]->getStart()->getCharPositionInLine(), "Concrete type missing for const declaration; integer assumed.");
             for(j=0;j<constdefs.size();++j)
-                result->global_defs.emplace_back(visit(constdefs[j]).as<var_def_stmt_syntax *>());
-
-                
+            vdefs->global_defs.emplace_back(visit(constdefs[j]).as<var_def_stmt_syntax *>());
         }
     }
     auto funcdefs = ctx->funcdef();
     for(i=0;i<funcdefs.size();++i)
-    result->global_defs.emplace_back(visit(funcdefs[i]).as<func_def_syntax *>());
-
+        fdefs->global_defs.emplace_back(visit(funcdefs[i]).as<func_def_syntax *>());
+    auto v = vdefs->global_defs.begin();
+    auto f = fdefs->global_defs.begin();
+    while(v != vdefs->global_defs.end() && f != fdefs->global_defs.end())
+    {
+        if((*v)->line < (*f)->line || (*v)->line == (*f)->line && (*v)->pos < (*f)->line)
+        {
+            result->global_defs.push_back(*v);
+            ++v;
+        }
+        else
+        {
+            result->global_defs.push_back(*f);
+            ++f;
+        }
+    }
+    while(v != vdefs->global_defs.end())
+    {
+        result->global_defs.push_back(*v);
+        ++v;
+    }
+    while(f != fdefs->global_defs.end())
+    {
+        result->global_defs.push_back(*f);
+        ++f;
+    }
     return static_cast<assembly *>(result);
 }
 
@@ -73,7 +98,7 @@ antlrcpp::Any syntax_tree_builder::visitConstdef(C1Parser::ConstdefContext *ctx)
                 result->initializers.emplace_back(visit(ctx->exp()[count]).as<expr_syntax *>());
             auto arraylength = new literal_syntax;
             arraylength->line = ctx->LeftBracket()->getSymbol()->getLine();
-            arraylength->pos = ctx->LeftBracket()->getSymbol()->getCharPositionInLine();
+            arraylength->pos = ctx->LeftBracket()->getSymbol()->getCharPositionInLine() + 1;
             arraylength->number = result->initializers.size();
             result->array_length.reset(static_cast<expr_syntax *>(arraylength));
         }
@@ -115,7 +140,7 @@ antlrcpp::Any syntax_tree_builder::visitVardef(C1Parser::VardefContext *ctx)
                     result->initializers.emplace_back(visit(ctx->exp()[count]).as<expr_syntax *>());
                 auto arraylength = new literal_syntax;
                 arraylength->line = ctx->LeftBracket()->getSymbol()->getLine();
-                arraylength->pos = ctx->LeftBracket()->getSymbol()->getCharPositionInLine();
+                arraylength->pos = ctx->LeftBracket()->getSymbol()->getCharPositionInLine()+1;
                 arraylength->number = result->initializers.size();
                 result->array_length.reset(static_cast<expr_syntax *>(arraylength));
             }
@@ -147,6 +172,8 @@ antlrcpp::Any syntax_tree_builder::visitFuncdef(C1Parser::FuncdefContext *ctx)
 antlrcpp::Any syntax_tree_builder::visitBlock(C1Parser::BlockContext *ctx)
 {
     auto result = new block_syntax;
+    auto db = new block_syntax;
+    auto sb = new block_syntax;
     result->line = ctx->getStart()->getLine();
     result->pos = ctx->getStart()->getCharPositionInLine();
     auto decls = ctx->decl();
@@ -157,21 +184,46 @@ antlrcpp::Any syntax_tree_builder::visitBlock(C1Parser::BlockContext *ctx)
         {
             auto vardefs = decls[i]->vardecl()->vardef();
             for(j=0;j<vardefs.size();++j)
-                result->body.emplace_back(visit(vardefs[j]).as<var_def_stmt_syntax *>());
+                db->body.emplace_back(visit(vardefs[j]).as<var_def_stmt_syntax *>());
         }
         if(decls[i]->constdecl())
         {
             auto constdefs = decls[i]->constdecl()->constdef();
             if(!decls[i]->constdecl()->Int())
-                err.warn(decls[i]->constdecl()->Const()->getSymbol()->getLine(), decls[i]->constdecl()->Const()->getSymbol()->getCharPositionInLine(), "Concrete type missing for const declaration; integer assumed.");
+                err.warn(decls[i]->constdecl()->constdef()[0]->getStart()->getLine(), decls[i]->constdecl()->constdef()[0]->getStart()->getCharPositionInLine(), "Concrete type missing for const declaration; integer assumed.");
             for(j=0;j<constdefs.size();++j)
-                result->body.emplace_back(visit(constdefs[j]).as<var_def_stmt_syntax *>());
+                db->body.emplace_back(visit(constdefs[j]).as<var_def_stmt_syntax *>());
         }
     }
     auto stmts = ctx->stmt();
     for(i=0;i<stmts.size();++i)
     {
-        result->body.emplace_back(visit(stmts[i]).as<stmt_syntax *>());
+        sb->body.emplace_back(visit(stmts[i]).as<stmt_syntax *>());
+    }
+    auto d = db->body.begin();
+    auto s = sb->body.begin();
+    while(d != db->body.end() && s != sb->body.end())
+    {
+        if((*d)->line < (*s)->line || (*d)->line == (*s)->line && (*d)->pos < (*s)->line)
+        {
+            result->body.push_back(*d);
+            ++d;
+        }
+        else
+        {
+            result->body.push_back(*s);
+            ++s;
+        }
+    }
+    while(d != db->body.end())
+    {
+        result->body.push_back(*d);
+        ++d;
+    }
+    while(s != sb->body.end())
+    {
+        result->body.push_back(*s);
+        ++s;
     }
     return static_cast<block_syntax *>(result);
 }
