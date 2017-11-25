@@ -33,6 +33,7 @@ void assembly_builder::visit(func_def_syntax &node)
     else
     {
         err.error(node.line, node.pos, "redefinition of '" + node.name + "'");
+        error_flag = true;
     }
     in_global = true;
     return;
@@ -161,14 +162,22 @@ void assembly_builder::visit(lval_syntax &node)
 {
     auto var = lookup_variable(node.name);
     auto lv = std::get<0>(var);
+    if(constexpr_expected)
+    {
+        err.error(node.line, node.pos, "Constant expression expected.");
+        error_flag = true;
+        return;
+    }
     if(!lv)
     {
         err.error(node.line, node.pos, "use of undeclared identifier '" + node.name + "'");
+        error_flag = true;
         return;
     }
     if(std::get<1>(var))
     {
-        err.error(node.line, node.pos, "Assigning to constant.");
+        err.error(node.line, node.pos, "Assigning to constant. '" + node.name + "'");
+        error_flag = true;
         return;
     }
     if(node.array_index)
@@ -237,6 +246,10 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             auto l = const_result;
             auto type = ArrayType::get(Type::getInt32Ty(context), l);
             constexpr_expected = true;
+            if(node.initializers.size() > const_result)
+            {
+                err.warn(node.line, node.pos, "array size maybe unmatched");
+            }
             auto inums = node.initializers.size();
             auto array_init = new Constant*[inums];
             for(auto i = 0; i < inums; ++i)
@@ -284,6 +297,10 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             auto l = const_result;
             auto type = ArrayType::get(Type::getInt32Ty(context), l);
             auto v = builder.CreateAlloca(type, nullptr, node.name);
+            if(node.initializers.size() > const_result)
+            {
+                err.warn(node.line, node.pos, "array size maybe unmatched");
+            }
             if(!node.initializers.empty())
             {
                 auto inums = node.initializers.size();
@@ -331,7 +348,10 @@ void assembly_builder::visit(func_call_stmt_syntax &node)
 {
     auto got = functions.find(node.name);
     if(got == functions.end())
+    {
         err.error(node.line, node.pos, "undefined reference to '" + node.name + "'");
+        error_flag = true;
+    }
     else
         builder.CreateCall(got->second);
     return;
