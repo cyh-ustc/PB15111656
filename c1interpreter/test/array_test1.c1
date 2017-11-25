@@ -1,0 +1,23 @@
+int aa=0;
+int t=0;
+
+void main() {
+	int a[10]={1,2,3,4,5,6,7,8,9,9};
+	int now;
+	int inputa;
+
+	while(aa==0) {
+		now=0;
+		t=0;
+		input();
+		inputa=input_var;
+		while(t<inputa) {
+			now=a[a[now]];
+			t=t+1;
+		}
+		output_var=now;
+		output();
+	}
+}
+
+
