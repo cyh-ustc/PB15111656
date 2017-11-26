@@ -249,6 +249,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             if(node.initializers.size() > const_result)
             {
                 err.warn(node.line, node.pos, "array size maybe unmatched");
+                error_flag = true;
             }
             auto inums = node.initializers.size();
             auto array_init = new Constant*[inums];
@@ -264,6 +265,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             if(!declare_variable(node.name, v, node.is_constant, true))
             {
                 err.error(node.line, node.pos, "redefinition of '" + node.name + "'");
+                error_flag = true;
             }
         }
         else   //non-array
@@ -284,6 +286,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             if(!declare_variable(node.name, v, node.is_constant, false))
             {
                 err.error(node.line, node.pos, "redefinition of '" + node.name + "'");
+                error_flag = true;
             }
         }
     }
@@ -300,6 +303,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             if(node.initializers.size() > const_result)
             {
                 err.warn(node.line, node.pos, "array size maybe unmatched");
+                error_flag = true;
             }
             if(!node.initializers.empty())
             {
@@ -314,6 +318,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             if(!declare_variable(node.name, v, node.is_constant, true))
             {
                 err.error(node.line, node.pos, "redefinition of '" + node.name + "'");
+                error_flag = true;
             }            
         }
         else //non array
@@ -327,6 +332,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             if(!declare_variable(node.name, v, node.is_constant, false))
             {
                 err.error(node.line, node.pos, "redefinition of '" + node.name + "'");
+                error_flag = true;
             }
         }
     }
