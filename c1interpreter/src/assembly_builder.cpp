@@ -45,26 +45,29 @@ void assembly_builder::visit(cond_syntax &node)
     auto l = value_result;
     node.rhs->accept(*this);
     auto r = value_result;
-    switch(node.op)
+    if(l && r)
     {
-        case relop::equal:
-            value_result = builder.CreateICmpEQ(l, r);
-            break;
-        case relop::non_equal:
-            value_result = builder.CreateICmpNE(l, r);
-            break;
-        case relop::less:
-            value_result = builder.CreateICmpSLT(l, r);
-            break;
-        case relop::less_equal:
-            value_result = builder.CreateICmpSLE(l, r);
-            break;
-        case relop::greater:
-            value_result = builder.CreateICmpSGE(l, r);
-            break;
-        case relop::greater_equal:
-            value_result = builder.CreateICmpEQ(l, r);
-            break;
+        switch(node.op)
+        {
+            case relop::equal:
+                value_result = builder.CreateICmpEQ(l, r);
+                break;
+            case relop::non_equal:
+                value_result = builder.CreateICmpNE(l, r);
+                break;
+            case relop::less:
+                value_result = builder.CreateICmpSLT(l, r);
+                break;
+            case relop::less_equal:
+                value_result = builder.CreateICmpSLE(l, r);
+                break;
+            case relop::greater:
+                value_result = builder.CreateICmpSGE(l, r);
+                break;
+            case relop::greater_equal:
+                value_result = builder.CreateICmpEQ(l, r);
+                break;
+        }
     }
     return;
 }
@@ -89,10 +92,46 @@ void assembly_builder::visit(binop_expr_syntax &node)
                 const_result = l * r;
                 break;
             case binop::divide:
-                const_result = l / r;
+                if(r)
+                {
+                    if(l==-2147483648 && r==-1)
+                    {
+                        const_result = 0;
+                        err.error(node.line, node.pos, "result overflow");
+                        error_flag = true;
+                    }
+                    else
+                    {
+                        const_result = l / r;
+                    }
+                }
+                else
+                {
+                    const_result = 0;
+                    err.error(node.line, node.pos, "division by zero");
+                    error_flag = true;
+                }
                 break;
             case binop::modulo:
-                const_result = l % r;
+                if(r)
+                {
+                    if(l==-2147483648 && r==-1)
+                    {
+                        const_result = 0;
+                        err.error(node.line, node.pos, "result overflow");
+                        error_flag = true;
+                    }
+                    else
+                    {
+                        const_result = l % r;
+                    }
+                }
+                else
+                {
+                    const_result = 0;
+                    err.error(node.line, node.pos, "division by zero");
+                    error_flag = true;
+                }
                 break;
         }        
     }
@@ -102,23 +141,26 @@ void assembly_builder::visit(binop_expr_syntax &node)
         auto l = value_result;
         node.rhs->accept(*this);
         auto r = value_result;
-        switch(node.op)
+        if(l && r)
         {
-            case binop::plus:
-                value_result = builder.CreateAdd(l, r);
-                break;
-            case binop::minus:
-                value_result = builder.CreateSub(l, r);
-                break;
-            case binop::multiply:
-                value_result = builder.CreateMul(l, r);
-                break;
-            case binop::divide:
-                value_result = builder.CreateSDiv(l, r);
-                break;
-            case binop::modulo:
-                value_result = builder.CreateSRem(l, r);
-                break;
+            switch(node.op)
+            {
+                case binop::plus:
+                    value_result = builder.CreateAdd(l, r);
+                    break;
+                case binop::minus:
+                    value_result = builder.CreateSub(l, r);
+                    break;
+                case binop::multiply:
+                    value_result = builder.CreateMul(l, r);
+                    break;
+                case binop::divide:
+                    value_result = builder.CreateSDiv(l, r);
+                    break;
+                case binop::modulo:
+                    value_result = builder.CreateSRem(l, r);
+                    break;
+            }
         }
     }
     return;
@@ -145,14 +187,17 @@ void assembly_builder::visit(unaryop_expr_syntax &node)
         node.rhs->accept(*this);
         auto r = value_result;
         auto zero = ConstantInt::get(Type::getInt32Ty(context), 0);
-        switch(node.op)
+        if(r)
         {
-            case unaryop::plus:
-                value_result = builder.CreateAdd(zero, r);
-                break;
-            case unaryop::minus:
-                value_result = builder.CreateSub(zero, r);
-                break;
+            switch(node.op)
+            {
+                case unaryop::plus:
+                    value_result = builder.CreateAdd(zero, r);
+                    break;
+                case unaryop::minus:
+                    value_result = builder.CreateSub(zero, r);
+                    break;
+            }
         }
     }
     return;
@@ -170,7 +215,8 @@ void assembly_builder::visit(lval_syntax &node)
     }
     if(!lv)
     {
-        err.error(node.line, node.pos, "use of undeclared identifier '" + node.name + "'");
+        err.error(node.line, node.pos, "Use of undeclared identifier '" + node.name + "'");
+        value_result =  nullptr;
         error_flag = true;
         return;
     }
@@ -185,6 +231,8 @@ void assembly_builder::visit(lval_syntax &node)
         if(!std::get<2>(var))
         {
             err.error(node.line, node.pos, "Array used as integer variable.");
+            error_flag = true;
+            value_result =  nullptr;
             return;            
         }
     }
@@ -193,6 +241,8 @@ void assembly_builder::visit(lval_syntax &node)
         if(std::get<2>(var))
         {
             err.error(node.line, node.pos, "Subscripted value is not an array.");
+            value_result =  nullptr;
+            error_flag = true;
             return;           
         }
     }
@@ -201,7 +251,8 @@ void assembly_builder::visit(lval_syntax &node)
         if(node.array_index)
         {
             node.array_index->accept(*this);
-            value_result = builder.CreateLoad(builder.CreateInBoundsGEP(lv, {ConstantInt::get(Type::getInt32Ty(context), 0), value_result}));
+            if(value_result)
+                value_result = builder.CreateLoad(builder.CreateInBoundsGEP(lv, {ConstantInt::get(Type::getInt32Ty(context), 0), value_result}));
         }
         else
         {
@@ -214,7 +265,8 @@ void assembly_builder::visit(lval_syntax &node)
         {
             lval_as_rval = true;
             node.array_index->accept(*this);
-            value_result = builder.CreateInBoundsGEP(lv, {ConstantInt::get(Type::getInt32Ty(context), 0), value_result});
+            if(value_result)
+                value_result = builder.CreateInBoundsGEP(lv, {ConstantInt::get(Type::getInt32Ty(context), 0), value_result});
             lval_as_rval = false;
         }
         else
@@ -248,8 +300,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             constexpr_expected = true;
             if(node.initializers.size() > const_result)
             {
-                err.warn(node.line, node.pos, "array size maybe unmatched");
-                error_flag = true;
+                err.warn(node.line, node.pos, "Array size maybe unmatched");
             }
             auto inums = node.initializers.size();
             auto array_init = new Constant*[inums];
@@ -264,7 +315,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             auto v = new GlobalVariable(*module, type, node.is_constant, GlobalValue::ExternalLinkage, ini, node.name);
             if(!declare_variable(node.name, v, node.is_constant, true))
             {
-                err.error(node.line, node.pos, "redefinition of '" + node.name + "'");
+                err.error(node.line, node.pos, "Redefinition of '" + node.name + "'");
                 error_flag = true;
             }
         }
@@ -285,7 +336,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             }
             if(!declare_variable(node.name, v, node.is_constant, false))
             {
-                err.error(node.line, node.pos, "redefinition of '" + node.name + "'");
+                err.error(node.line, node.pos, "Redefinition of '" + node.name + "'");
                 error_flag = true;
             }
         }
@@ -302,8 +353,7 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             auto v = builder.CreateAlloca(type, nullptr, node.name);
             if(node.initializers.size() > const_result)
             {
-                err.warn(node.line, node.pos, "array size maybe unmatched");
-                error_flag = true;
+                err.warn(node.line, node.pos, "Array size maybe unmatched");
             }
             if(!node.initializers.empty())
             {
@@ -312,12 +362,13 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
                 {
                     node.initializers[i]->accept(*this);
                     auto arrayptr = builder.CreateInBoundsGEP(type, v, {ConstantInt::get(Type::getInt32Ty(context), 0),ConstantInt::get(Type::getInt32Ty(context), i)});
-                    builder.CreateStore(value_result, arrayptr);
+                    if(value_result)
+                        builder.CreateStore(value_result, arrayptr);
                 }
             }
             if(!declare_variable(node.name, v, node.is_constant, true))
             {
-                err.error(node.line, node.pos, "redefinition of '" + node.name + "'");
+                err.error(node.line, node.pos, "Redefinition of '" + node.name + "'");
                 error_flag = true;
             }            
         }
@@ -326,12 +377,13 @@ void assembly_builder::visit(var_def_stmt_syntax &node)
             auto v = builder.CreateAlloca(Type::getInt32Ty(context), nullptr, node.name);
             if(!node.initializers.empty())
             {
-                node.initializers[0]->accept(*this);               
-                builder.CreateStore(value_result, v);
+                node.initializers[0]->accept(*this);
+                if(value_result)
+                    builder.CreateStore(value_result, v);
             }
             if(!declare_variable(node.name, v, node.is_constant, false))
             {
-                err.error(node.line, node.pos, "redefinition of '" + node.name + "'");
+                err.error(node.line, node.pos, "Redefinition of '" + node.name + "'");
                 error_flag = true;
             }
         }
@@ -346,7 +398,8 @@ void assembly_builder::visit(assign_stmt_syntax &node)
     lval_as_rval = true;
     node.value->accept(*this);
     auto v = value_result;
-    builder.CreateStore(v, t);
+    if(v && t)
+        builder.CreateStore(v, t);
     return;
 }
 
@@ -355,7 +408,7 @@ void assembly_builder::visit(func_call_stmt_syntax &node)
     auto got = functions.find(node.name);
     if(got == functions.end())
     {
-        err.error(node.line, node.pos, "undefined reference to '" + node.name + "'");
+        err.error(node.line, node.pos, "Undefined reference to '" + node.name + "'");
         error_flag = true;
     }
     else
@@ -378,7 +431,8 @@ void assembly_builder::visit(if_stmt_syntax &node)
     auto bbtrue = BasicBlock::Create(context, "BB" + std::to_string(bb_count++), current_function);
     auto bbfalse = BasicBlock::Create(context, "BB" + std::to_string(bb_count++), current_function);
     auto bbfinish = BasicBlock::Create(context, "BB" + std::to_string(bb_count++), current_function);
-    builder.CreateCondBr(value_result, bbtrue, bbfalse);
+    if(value_result)
+        builder.CreateCondBr(value_result, bbtrue, bbfalse);
     builder.SetInsertPoint(bbtrue);
     node.then_body->accept(*this);
     builder.CreateBr(bbfinish);
@@ -398,7 +452,8 @@ void assembly_builder::visit(while_stmt_syntax &node)
     builder.CreateBr(bbtest);
     builder.SetInsertPoint(bbtest);
     node.pred->accept(*this);
-    builder.CreateCondBr(value_result, bbtrue, bbfinish);
+    if(value_result)
+        builder.CreateCondBr(value_result, bbtrue, bbfinish);
     builder.SetInsertPoint(bbtrue);
     node.body->accept(*this);
     builder.CreateBr(bbtest);
