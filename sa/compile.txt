@@ -1,0 +1,9 @@
+cpu: Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+内存大小: 8GB
+操作系统: Ubuntu 17.10
+cmake目标: make
+cmake build type: Debug
+编译线程数: 4
+编译耗时: 130min
+内存占用峰值: 17.0GB
+遇到的问题及如何解决: 内存不够，黑屏out of memory；临时挂了10GB交换空间
